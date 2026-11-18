@@ -212,7 +212,7 @@ def measureTextWidth(text=""):
 
 def calculateClassWidth(umlClass):
     padding = 100
-    minWidth = 350
+    
     umlDiagram = document.getElementById("umlDiagram")
     # Containerbreite bestimmen (für zukünftige Erweiterungen behalten)
     containerWidth = (
@@ -221,18 +221,18 @@ def calculateClassWidth(umlClass):
         or window.innerWidth
     )
     containerWidth -= 40
-
+    # changed by h4d1ny
+    minWidth=min(350, containerWidth)
     # Maximale Textbreite ermitteln
     maxTextWidth = measureTextWidth(umlClass["name"])
     for attr in umlClass["attributes"]:
         maxTextWidth = max(maxTextWidth, measureTextWidth(attr["attr"]))
     for method in umlClass["methods"]:
         maxTextWidth = max(maxTextWidth, measureTextWidth(method["methode"]))
-
     # Keine harte Obergrenze, damit lange Methoden den Rahmen erweitern können
     return max(minWidth, math.ceil((maxTextWidth + padding)))
 
-def resizeUmlClasses():
+def resizeUmlClasses(event=None):
     """ Die Breite des UML-Diagramm anpassen"""
     umlDiagram = document.getElementById("umlDiagram")
     if not umlDiagram:
@@ -1725,7 +1725,8 @@ def on_dom_content_loaded(event=None):
     add_listener(document.getElementById("toggleCode"), "click", toggleCodePanel)
     add_listener(document.getElementById("exportJson"), "click", openExportModal)
     add_listener(document.getElementById("importJson"), "click", openImportModal)
-
+    """changed by h4d1ny"""
+    add_listener(window, "resize", resizeUmlClasses) 
 def init_handlers():
     """ Initialisiert Event-Handler beim Laden der Seite """
     if document.readyState == "loading":

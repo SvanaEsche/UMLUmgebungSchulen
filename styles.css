@@ -343,10 +343,19 @@
       }
           
       @media (max-width: 768px) {
-        .panels-container {
+        /*.panels-container {
           flex-direction: column;
         }
-              
+          changed by h4d1ny*/
+        .panels-container { 
+          grid-template-columns: 1fr;
+          gap: 10px; 
+        }   /* diagram above, code below */
+          .uml-diagram {
+          --drag-edge-zone-size: 12px;     /* less padding around the class */
+          width: 100%;
+          min-width: 0;
+        }
         .panel {
           min-height: 300px;
         }
@@ -359,6 +368,13 @@
         .controls {
           width: 100%;
           justify-content: center;
+        }
+
+        
+      }
+      @media (pointer: coarse) {
+        .btn-small, .btn-small-getter-setter, .remove-attr, .remove-method { 
+          min-width: 36px; min-height: 36px; 
         }
       }
 
@@ -505,6 +521,7 @@
         font-size: 12px;
       }
     }
+
 
     .tooltip {
       position: relative !important;
