@@ -5,22 +5,39 @@ Stack: `index.html` + `styles.css` + `drag.js` + `main.py` (PyScript/Pyodide).
 
 ## Local Start (VS Code)
 
+### Prerequisites
+
+- Python 3 installed locally to run the web server.
+- Git installed to clone the repository.
+- A current web browser and an internet connection to load PyScript/Pyodide.
+- Visual Studio Code is optional; the terminal commands also work without it.
+- No separate build step or additional `pip` / `npm` packages are required.
+
+### Start the UML_V2 development version
+
 1) Clone the project in VS Code:
 
 - Open Command Palette (`Cmd+Shift+P` / `Ctrl+Shift+P`)
 - Run `Git: Clone`
-- Paste your repository URL (`<REPO-URL>`)
-- Choose a local folder and click `Open` when prompted
+- Paste the repository URL: `https://github.com/SvanaEsche/UMLUmgebungSchulen.git`
+- Choose a local folder and click `Open` when prompted.
+- Select the `UML_V2` branch using the branch selector in the bottom-left corner of VS Code before starting the application.
 
 Alternative via terminal:
 
 ```bash
-git clone <REPO-URL>
-cd UML
-code .
+git clone --branch UML_V2 https://github.com/SvanaEsche/UMLUmgebungSchulen.git
+cd UMLUmgebungSchulen
 ```
 
-2) Start a local web server from the project root:
+If the repository is already cloned, open a terminal in its directory, switch to the development branch, and download its latest changes (commit or stash any local changes first):
+
+```bash
+git switch UML_V2
+git pull --ff-only
+```
+
+2) Start a local web server from the project root (the directory containing `index.html`) and keep the terminal running:
 
 macOS / Linux:
 
